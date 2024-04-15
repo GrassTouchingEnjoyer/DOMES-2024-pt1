@@ -141,10 +141,10 @@ public simple_Element search(int key){
 
     else{
 
-        for(int index = 0 ; index <= this.tail ; index++)   // linear search since it's unsorted
+        for(int index = 0 ; index <= this.tail ; index++)           // linear search since it's unsorted
         { 
 
-            if(this.listArray[index].getKey()==key)    // if we locate the key 
+            if(this.listArray[index].getKey()==key)                 // if we locate the key 
             {
                 print.is("Element located in ["+ index +"]: ");     // print location
                 return this.listArray[index];                       // return element
@@ -197,18 +197,27 @@ public boolean is_array_empty(){
 //____________________________________________________________|
 
 
+
+
+/*
+ * changed from IF to TRY-CATCH
+ */
+
 //_________________|prints an element in the list|________________
 
-public void print_element(int index){
+public void print_element(int index){                               
 
-    if(this.listArray[index]!=null){
-        
+    try{
+
         print.is("Element is: "+this.listArray[index].toString());
-    }
 
-    else{
+    }catch (NullPointerException e){
 
         print.is("no element found to print");
+
+    }catch (ArrayIndexOutOfBoundsException e){
+
+        print.is("Element out of index, it does not exist");
     }
 
 }
